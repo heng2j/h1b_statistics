@@ -105,7 +105,7 @@ def get_top_10_by_field(data,target_field,columns_dict,result_columns):
     top_10_results_dict = {}
 
     for record in data:
-        if record[columns_dict['STATUS']] == 'CERTIFIED' and 'H-1B' in record[columns_dict['CLASS']]:
+        if record[columns_dict['STATUS']] == 'CERTIFIED':# and 'H-1B' in record[columns_dict['CLASS']]:
             total_certified_count +=1
             if record[columns_dict[target_field]] in summarized_dict:
                 summarized_dict[record[columns_dict[target_field]]] = summarized_dict[record[columns_dict[target_field]]] + 1
@@ -116,7 +116,7 @@ def get_top_10_by_field(data,target_field,columns_dict,result_columns):
     sorted_results = sorted(summarized_dict.items(), key=lambda x: (-x[1], x[0]))
 
     # Extract top 10 from occupations_dict and assign percentage
-    top_10_records = list(sorted_results)[:10]
+    top_10_records = list(sorted_results) #[:10]
 
     #  Loop through the top 10 and calculate the expected values
     for record in top_10_records:
